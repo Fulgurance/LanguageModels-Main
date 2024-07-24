@@ -1,21 +1,9 @@
 class Target < ISM::Software
-    
-    def configure
+
+    def prepare
         super
 
-        if option("Pass1")
-            configureSource(arguments:  "--prefix=/usr  \
-                                        --enable-shared \
-                                        --without-ensurepip",
-                            path:       buildDirectoryPath)
-        else
-            configureSource(arguments:  "--prefix=/usr      \
-                                        --enable-shared     \
-                                        --with-system-expat \
-                                        --with-system-ffi   \
-                                        --enable-optimizations",
-                            path:       buildDirectoryPath)
-        end
+        #Add a phase to patch when building in a virtual machine. Need to remove -march=native from the Makefile and set -march=x86-64 (no avx instructions)
     end
     
     def build
@@ -23,18 +11,11 @@ class Target < ISM::Software
 
         makeSource(path: buildDirectoryPath)
     end
-    
+
     def prepareInstallation
         super
 
-        makeSource( arguments:  "DESTDIR=#{builtSoftwareDirectoryPath}#{Ism.settings.rootPath} install",
-                    path:       buildDirectoryPath)
-
-        if !option("Pass1")
-            makeLink(   target: "python3",
-                        path:   "#{builtSoftwareDirectoryPath}#{Ism.settings.rootPath}usr/bin/python",
-                        type:   :symbolicLink)
-        end
+        copyFile("#{buildDirectoryPath}llama-*","#{builtSoftwareDirectoryPath}#{Ism.settings.rootPath}/")
     end
 
 end
