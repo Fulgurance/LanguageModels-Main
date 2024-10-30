@@ -1,0 +1,38 @@
+{
+  "port": "LanguageModels-Main",
+  "name": "LlamaCpp",
+  "version": "3995.0.0",
+  "architectures": ["x86_64"],
+  "description": "LLM inference in C/C++",
+  "website": "https://github.com/ggerganov/llama.cpp",
+  "installedFiles": [],
+  "dependencies": [
+    {
+      "port": "SystemBase-Main",
+      "name": "SystemBase",
+      "version": ">=0.2.0",
+      "options": []
+    }
+  ],
+  "kernelDependencies": [],
+  "options": [
+    {
+      "name": "Gemma-2-9b-it-Q4_K_M",
+      "description": "Enable gemma model support",
+      "active": false,
+      "dependencies": [
+        {
+          "port": "LanguageModels-Main",
+          "name": "Gemma-2-9b-it-Q4_K_M",
+          "version": ">=0.0.0",
+          "options": []
+        }
+      ],
+      "kernelDependencies": []
+    }
+  ],
+  "uniqueDependencies": [],
+  "uniqueOptions": [],
+  "selectedDependencies": [],
+  "allowCodependencies": []
+}
