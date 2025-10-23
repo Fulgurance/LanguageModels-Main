@@ -1,0 +1,26 @@
+PORT
+    LanguageModels-Main
+NAME
+    LlamaCpp
+VERSION
+    3447.0.0
+ARCHITECTURES
+    x86_64
+DESCRIPTION
+    LLM inference in C/C++
+WEBSITE
+    https://github.com/ggerganov/llama.cpp
+DEPENDENCIES
+        @SystemBase-Main:SystemBase>=0.2.0
+KERNELDEPENDENCIES
+OPTIONS
+    name: Gemma-2-9b-it-Q4_K_M
+    description: Enable gemma model support
+    active: false
+    dependencies:
+        @LanguageModels-Main:Gemma-2-9b-it-Q4_K_M>=0.0.0
+    kernelDependencies:
+
+UNIQUEDEPENDENCIES
+UNIQUEOPTIONS
+ALLOWCODEPENDENCIES
